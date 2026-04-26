@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🛡️ Hostel Haven - Premium Hostel Management System
 
 A state-of-the-art, full-stack hostel management solution designed for students, parents, and administrative staff. Built with a focus on premium aesthetics, security, and seamless user experience.
@@ -82,3 +83,6 @@ hostel-haven/
 - **Secure Auth:** JWT-protected routes and password hashing.
 - **PWA Ready:** Installable application with offline support.
 - **Responsive Design:** Optimized for mobile and desktop displays.
+=======
+# HOSTEL-HAVEN
+>>>>>>> bc2b06ea014333b5bfa30627ee19c510df7b7c6b
