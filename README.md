@@ -83,3 +83,8 @@ hostel-haven/
 - **Secure Auth:** JWT-protected routes and password hashing.
 - **PWA Ready:** Installable application with offline support.
 - **Responsive Design:** Optimized for mobile and desktop displays.
+
+## 🔐 Test Credentials
+For presentation and testing purposes, you can use the following pre-seeded Guard account:
+- **Email:** `guard@university.edu`
+- **Password:** `guard123`
