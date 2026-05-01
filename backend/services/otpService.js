@@ -56,6 +56,7 @@ const createTransporter = () => {
         port: 587,
         secure: false, // false for port 587 (uses STARTTLS)
         requireTLS: true, // Force TLS upgrade
+        family: 4, // Force IPv4 explicitly at the socket layer to bypass Render IPv6 issues
         auth: { user, pass },
         connectionTimeout: 10000, // 10 seconds max wait
         greetingTimeout: 10000,
