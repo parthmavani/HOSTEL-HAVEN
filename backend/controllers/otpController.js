@@ -35,9 +35,17 @@ const requestOtp = async (req, res) => {
         const otp = generateOtp();
         const otpHash = await hashOtp(otp);
         await saveOtp(user.user_id, otpHash);
-        await sendEmail(user.email, otp);
-
-        return res.status(200).json({ message: 'If an account exists, an OTP has been sent.' });
+        
+        try {
+            await sendEmail(user.email, otp);
+            return res.status(200).json({ message: 'If an account exists, an OTP has been sent to your email.' });
+        } catch (emailError) {
+            console.error('[requestOtp] Email failed to send:', emailError.message);
+            // Return 200 so the frontend UI doesn't break, but inform them it failed
+            return res.status(200).json({ 
+                message: 'Failed to send email due to cloud network restrictions. Please check the server console for your OTP.' 
+            });
+        }
     } catch (error) {
         console.error('[requestOtp] Error:', error);
         return res.status(500).json({ message: 'Server error. Please try again later.' });

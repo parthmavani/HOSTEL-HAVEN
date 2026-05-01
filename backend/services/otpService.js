@@ -76,6 +76,9 @@ const sendEmail = async (toAddress, otp) => {
         return;
     }
 
+    // Always log the OTP to the console as a fallback for presentations if Render blocks the email
+    console.log(`\n📧 [ATTEMPTING TO SEND] OTP for ${toAddress}: ${otp}\n`);
+
     await transporter.sendMail({
         from: `"Hostel Haven" <${process.env.NODEMAILER_USER}>`,
         to: toAddress,
