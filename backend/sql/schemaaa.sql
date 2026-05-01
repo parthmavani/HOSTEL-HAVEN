@@ -17,6 +17,7 @@ CREATE TABLE users (
     phone VARCHAR(15),
     profile_image_path VARCHAR(255),
     is_active BOOLEAN DEFAULT TRUE,
+    is_sharing_location BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

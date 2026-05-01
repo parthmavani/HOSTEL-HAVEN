@@ -17,6 +17,10 @@ pool.getConnection()
     });
 
 const app = express();
+
+// Trust the first proxy (Render's load balancer) for express-rate-limit
+app.set('trust proxy', 1);
+
 const PORT = process.env.PORT || 5000;
 
 // Middleware

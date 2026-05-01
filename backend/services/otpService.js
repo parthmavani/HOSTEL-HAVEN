@@ -52,7 +52,9 @@ const createTransporter = () => {
     if (!user || !pass) return null; // Dev fallback
 
     return nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // true for port 465, false for other ports
         auth: { user, pass },
     });
 };
