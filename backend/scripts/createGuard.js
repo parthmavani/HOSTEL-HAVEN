@@ -12,7 +12,9 @@ async function createGuard() {
             host: process.env.DB_HOST || 'localhost',
             user: process.env.DB_USER || 'root',
             password: process.env.DB_PASSWORD || '',
-            database: process.env.DB_NAME || 'hostel_leave_management'
+            database: process.env.DB_NAME || 'hostel_leave_management',
+            port: process.env.DB_PORT || 3306,
+            ssl: { minVersion: 'TLSv1.2', rejectUnauthorized: true }
         });
 
         console.log('Connected to MySQL.');
