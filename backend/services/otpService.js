@@ -76,7 +76,14 @@ const sendEmail = async (toAddress, otp) => {
         return;
     }
 
-    // Always log the OTP to the console as a fallback for presentations if Render blocks the email
+    // RENDER FIREWALL BYPASS: Render blocks outbound SMTP. To prevent the 10-second timeout 
+    // and errors during your presentation, we instantly mock the email if running on Render.
+    if (process.env.RENDER === 'true') {
+        console.log(`\n✅ [RENDER PRESENTATION MODE] Email bypassed. OTP for ${toAddress}: ${otp}\n`);
+        return; // Return immediately, simulating a successful email send!
+    }
+
+    // Always log the OTP to the console as a fallback
     console.log(`\n📧 [ATTEMPTING TO SEND] OTP for ${toAddress}: ${otp}\n`);
 
     await transporter.sendMail({
