@@ -75,7 +75,14 @@ const registerUser = async (req, res) => {
         const otp = generateOtp();
         const otpHash = await hashOtp(otp);
         await saveOtp(userId, otpHash);
-        await sendEmail(email.toLowerCase().trim(), otp);
+        
+        let message = 'Account created. Verify OTP sent to your email.';
+        try {
+            await sendEmail(email.toLowerCase().trim(), otp);
+        } catch (emailError) {
+            console.error('Failed to send OTP email during registration:', emailError);
+            message = 'Account created, but we could not send the OTP email. You can request a new one from the login page.';
+        }
 
         res.status(201).json({
             user_id: userId,
@@ -83,7 +90,7 @@ const registerUser = async (req, res) => {
             email: email.toLowerCase().trim(),
             role,
             is_active: false,
-            message: 'Account created. Verify OTP sent to your email.',
+            message: message,
         });
     } catch (error) {
         console.error(error);

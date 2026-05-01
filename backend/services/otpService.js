@@ -56,6 +56,9 @@ const createTransporter = () => {
         port: 465,
         secure: true, // true for port 465, false for other ports
         auth: { user, pass },
+        connectionTimeout: 10000, // 10 seconds max wait
+        greetingTimeout: 10000,
+        socketTimeout: 10000,
     });
 };
 
