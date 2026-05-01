@@ -10,7 +10,8 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME || 'hostel_leave_management',
     port: process.env.DB_PORT || 3306,
     ssl: {
-        rejectUnauthorized: false
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: true
     },
     waitForConnections: true,
     connectionLimit: 10,
